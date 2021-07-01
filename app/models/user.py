@@ -12,8 +12,12 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.Text)
     avatar = db.Column(db.String(500))
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime(timezone=True), nullable=False, server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True), nullable=False, server_default=func.now())
+    created_at = db.Column(db.DateTime(timezone=True),
+                           nullable=False, server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True),
+                           nullable=False, server_default=func.now())
+    songs = db.relationship('Song', back_populates='users')
+    comments = db.relationship('Comment', back_populates='users')
 
     @property
     def password(self):
