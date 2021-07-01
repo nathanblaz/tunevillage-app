@@ -21,10 +21,10 @@ class Song(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'song_url' = self.song_url,
-            'song_art' = self.song_art,
-            'user_id' = self.user_id,
-            'created_at' = self.created_at,
-            'updated_at' = self.updated_at,
-            'user' = self.users.to_dict()
+            'song_url': self.song_url,
+            'song_art': self.song_art,
+            'user_id': self.user_id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user': self.users.to_dict()
         }
