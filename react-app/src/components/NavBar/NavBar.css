@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #ececec;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navlinks {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+#logo {
+  width: 108px;
+}
