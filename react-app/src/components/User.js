@@ -23,7 +23,7 @@ function User() {
 
   return (
     <div>
-      <img src={user.avatar}></img>
+      <img src={user.avatar} alt="avatar"></img>
       <ul>
         <li>
           <strong>User Id</strong> {userId}
