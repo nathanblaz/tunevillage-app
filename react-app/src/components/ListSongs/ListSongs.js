@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { renderUserSongs } from "../../store/song";
 
-const ListSongs = ({ user }) => {
+const ListSongs = ({ userId }) => {
   const dispatch = useDispatch();
   const songs = useSelector((state) => Object.values(state.songReducer));
 
+  //   console.log("In ListSongs.js, userId = ", userId);
   useEffect(() => {
-    dispatch(renderUserSongs());
-  }, [dispatch]);
+    dispatch(renderUserSongs(userId));
+  }, [dispatch, userId]);
 
   return (
     <div className="song-container">
