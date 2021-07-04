@@ -17,7 +17,7 @@ const ListSongs = ({ userId }) => {
         {songs.map((song) => (
           <>
             <li>Song: {`${song.title}`}</li>
-            <audio src={`${song.song_url}`}></audio>
+            <audio controls src={`${song.song_url}`}></audio>
           </>
         ))}
       </ul>
