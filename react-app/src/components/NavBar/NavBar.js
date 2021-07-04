@@ -1,12 +1,22 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
+import { demoLogin } from "../../store/session";
 import "./NavBar.css";
 import logo from "./tunevillage-logo.svg";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const demoFunc = async (e) => {
+    e.preventDefault();
+    dispatch(demoLogin());
+
+    history.push("/");
+  };
 
   return (
     <nav className="navbar">
@@ -16,7 +26,7 @@ const NavBar = () => {
         exact={true}
         activeClassName="active"
       >
-        <img id="logo" src={logo}></img>
+        <img id="logo" src={logo} alt="Tunevillage"></img>
       </NavLink>
       {user ? (
         <>
@@ -32,6 +42,9 @@ const NavBar = () => {
         </>
       ) : (
         <>
+          <button type="button" id="demo-button" onClick={demoFunc}>
+            Demo
+          </button>
           <NavLink
             className="navlinks"
             to="/sign-up"
