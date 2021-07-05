@@ -19,7 +19,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('<int:id>/songs/')
+@user_routes.route('<int:id>/songs')
 # @login_required
 def user_songs(id):
     songs = Song.query.filter(Song.user_id == id).all()
