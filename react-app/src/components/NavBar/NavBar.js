@@ -11,7 +11,6 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
-  const [showButton, setShowButton] = useState(true);
 
   const demoFunc = async (e) => {
     e.preventDefault();
