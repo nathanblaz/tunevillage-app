@@ -1,4 +1,4 @@
-.navbar {
+#navbar {
   background-color: #ececec;
   height: 58px;
   display: flex;
@@ -13,4 +13,40 @@
 
 #logo {
   width: 108px;
+}
+
+.menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+#user-button {
+  padding: 15px 15px;
+  border: none;
+  font-size: 20px;
+  margin: 0;
+  background-color: inherit;
+  color: white;
+  transition: all 0.2s ease-out;
+  border-radius: 4px;
+}
+
+#user-button:hover {
+  background-color: #f2545bff;
+  color: white;
+  cursor: pointer;
+}
+
+#user-menu {
+  position: absolute;
+  margin-top: 14px;
+  width: 120px;
+  background-color: lawngreen;
+  text-align: end;
+}
+
+.user-menu-buttons {
+}
+
+.demo-button {
 }

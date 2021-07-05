@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ListSongs from "./ListSongs/";
+import ListSongs from "../ListSongs";
 
 function User() {
   const [user, setUser] = useState({});
