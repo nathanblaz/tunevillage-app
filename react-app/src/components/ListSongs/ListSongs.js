@@ -15,10 +15,10 @@ const ListSongs = ({ userId }) => {
     <div className="song-container">
       <ul>
         {songs.map((song) => (
-          <>
-            <li>Song: {`${song.title}`}</li>
+          <li key={song.id}>
+            Song: {`${song.title}`}
             <audio controls src={`${song.song_url}`}></audio>
-          </>
+          </li>
         ))}
       </ul>
     </div>
