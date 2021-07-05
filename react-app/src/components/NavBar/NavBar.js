@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
@@ -10,6 +10,8 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [showMenu, setShowMenu] = useState(false);
+  const [showButton, setShowButton] = useState(true);
 
   const demoFunc = async (e) => {
     e.preventDefault();
@@ -18,8 +20,24 @@ const NavBar = () => {
     history.push("/");
   };
 
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener("click", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
   return (
-    <nav className="navbar">
+    <nav id="navbar">
       <NavLink
         className="navlinks"
         to="/"
@@ -38,7 +56,22 @@ const NavBar = () => {
           >
             Users
           </NavLink>
-          <LogoutButton />
+          <div id="menu-container">
+            <button id="user-button" onClick={openMenu}>
+              <i className="avatar-circle" />
+            </button>
+            {showMenu && (
+              <div id="user-menu">
+                <div className="user-menu-buttons">
+                  Hey{" "}
+                  <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>!
+                </div>
+                <div className="user-menu-buttons">
+                  <LogoutButton />
+                </div>
+              </div>
+            )}
+          </div>
         </>
       ) : (
         <>
