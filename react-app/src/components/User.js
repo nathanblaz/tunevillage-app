@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ListSongs from "./ListSongs/";
 
 function User() {
   const [user, setUser] = useState({});
 
   const { userId } = useParams();
+
+  // console.log("In User.js, userId = ", userId);
 
   useEffect(() => {
     if (!userId) {
@@ -38,6 +41,7 @@ function User() {
           <strong>Bio</strong> {user.bio}
         </li>
       </ul>
+      <ListSongs userId={userId} />
     </div>
   );
 }
