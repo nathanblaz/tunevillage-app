@@ -35,7 +35,13 @@ function User() {
   return (
     <div>
       <img src={userProfile.avatar} alt="avatar"></img>
-      {currentUser.id === Number(userId) ? <UploadAvatar /> : null}
+      {currentUser.id === Number(userId) ? (
+        <div>
+          <button id="edit-profile" onClick="">
+            Add A Profile Image
+          </button>
+        </div>
+      ) : null}
       <ul>
         <li>
           <strong>User Id</strong> {userId}
