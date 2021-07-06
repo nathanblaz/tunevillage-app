@@ -10,9 +10,9 @@ const addAvatar = (avatar) => ({
 
 // thunks
 
-export const uploadAvatar = (userId, formData) => async (dispatch) => {
-  const res = await fetch(`/api/${userId}/avatar`, {
-    method: "PUT",
+export const uploadAvatar = (formData, userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/avatar`, {
+    method: "POST",
     body: formData,
   });
   if (res.ok) {

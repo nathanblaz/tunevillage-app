@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models import db, Song
 from flask_login import current_user, login_required
-from s3_helpers import (
+from app.s3_helpers import (
     upload_file_to_s3, get_unique_filename, allowed_file)
 
 song_routes = Blueprint("songs", __name__)

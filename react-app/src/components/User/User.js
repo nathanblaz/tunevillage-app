@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ListSongs from "../ListSongs";
-import UploadAvatar from "../UploadAvatar";
+import UploadAvatarModal from "../UploadAvatarModal";
 
 function User() {
   const currentUser = useSelector((state) => state.session.user);
@@ -36,11 +36,7 @@ function User() {
     <div>
       <img src={userProfile.avatar} alt="avatar"></img>
       {currentUser.id === Number(userId) ? (
-        <div>
-          <button id="edit-profile" onClick="">
-            Add A Profile Image
-          </button>
-        </div>
+        <UploadAvatarModal userId={userId} />
       ) : null}
       <ul>
         <li>
