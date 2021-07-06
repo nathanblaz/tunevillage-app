@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ListSongs from "../ListSongs";
 import UploadAvatarModal from "../UploadAvatarModal";
+import { getAUser } from "../../store/user";
 
 function User() {
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const [userProfile, setUserProfile] = useState({});
+  // const [userProfile, setUserProfile] = useState({});
 
   const { userId } = useParams();
+  const userProfile = useSelector((state) => state.userReducer);
+  console.log("******", userProfile);
 
   // console.log("In User.js, currentUser = ", currentUser);
   // console.log("In User.js, userId = ", userId);
@@ -18,23 +22,21 @@ function User() {
   // }
 
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const userProfile = await response.json();
-      setUserProfile(userProfile);
-    })();
-  }, [userId]);
+    dispatch(getAUser(Number(userId)));
+  }, [dispatch, userId]);
 
-  if (!userProfile) {
-    return null;
-  }
+  console.log(userProfile.avatar === null);
 
   return (
     <div>
-      <img src={userProfile.avatar} alt="avatar"></img>
+      {userProfile.avatar !== null ? (
+        <img src={userProfile?.avatar} alt="avatar"></img>
+      ) : (
+        <img
+          src="https://blueheronhillsgc.com/wp-content/uploads/2016/03/female-profile-blank.jpg"
+          alt="blank-avatar"
+        ></img>
+      )}
       {currentUser.id === Number(userId) ? (
         <UploadAvatarModal userId={userId} />
       ) : null}

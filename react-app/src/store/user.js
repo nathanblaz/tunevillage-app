@@ -1,5 +1,6 @@
 // constants
-const ADD_AVATAR = "avatar/ADD_AVATAR";
+const ADD_AVATAR = "user/ADD_AVATAR";
+const GET_USER = "user/GET_USER";
 
 // action creators
 
@@ -8,7 +9,23 @@ const addAvatar = (avatar) => ({
   payload: avatar,
 });
 
+const getUser = (user) => ({
+  type: GET_USER,
+  payload: user,
+});
+
 // thunks
+
+export const getAUser = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userId}`);
+  if (response.ok) {
+    const userProfile = await response.json();
+    dispatch(getUser(userProfile));
+  } else {
+    console.log("error--getAUser thunk");
+    console.log(response);
+  }
+};
 
 export const uploadAvatar = (formData, userId) => async (dispatch) => {
   const res = await fetch(`/api/users/${userId}/avatar`, {
@@ -32,7 +49,8 @@ export default function userReducer(state = initialState, action) {
     case ADD_AVATAR:
       const updatedState = { ...action.payload };
       return updatedState;
-
+    case GET_USER:
+      return { ...action.payload };
     default:
       return state;
   }
