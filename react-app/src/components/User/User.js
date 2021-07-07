@@ -29,20 +29,6 @@ function User() {
 
   return (
     <div>
-      {userProfile.avatar !== null ? (
-        <img src={userProfile?.avatar} alt="avatar"></img>
-      ) : (
-        <img
-          src="https://blueheronhillsgc.com/wp-content/uploads/2016/03/female-profile-blank.jpg"
-          alt="blank-avatar"
-        ></img>
-      )}
-      {currentUser.id === Number(userId) ? (
-        <>
-          <UploadAvatarModal userId={userId} />
-          <DeleteAvatarModal userId={userId} />
-        </>
-      ) : null}
       <ul>
         <li>
           <strong>User Id</strong> {userId}
@@ -53,11 +39,7 @@ function User() {
         <li>
           <strong>Email</strong> {userProfile.email}
         </li>
-        <li>
-          <strong>Bio</strong> {userProfile.bio}
-        </li>
       </ul>
-      <ListSongs userId={userId} />
     </div>
   );
 }

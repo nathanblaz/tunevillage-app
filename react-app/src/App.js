@@ -34,6 +34,12 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
+        <Route path="/artists" exact={true}>
+          <ArtistsList />
+        </Route>
+        <Route path="/artists:artistId" exact={true}>
+          <Artist />
+        </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>

@@ -10,7 +10,7 @@ const addAvatar = (avatar) => ({
   payload: avatar,
 });
 
-const getUser = (artist) => ({
+const getArtist = (artist) => ({
   type: GET_USER,
   payload: artist,
 });
@@ -22,13 +22,13 @@ const deleteAvatar = (avatar) => ({
 
 // thunks
 
-export const getAUser = (artistId) => async (dispatch) => {
+export const getAnArtist = (artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}`);
   if (res.ok) {
     const artistProfile = await res.json();
-    dispatch(getUser(artistProfile));
+    dispatch(getArtist(artistProfile));
   } else {
-    console.log("error--getAUser thunk");
+    console.log("error--getAnArtist thunk");
     console.log(res);
   }
 };
