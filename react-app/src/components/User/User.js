@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ListSongs from "../ListSongs";
 import UploadAvatarModal from "../UploadAvatarModal";
+import DeleteAvatarModal from "../DeleteAvatarModal";
 import { getAUser } from "../../store/user";
 
 function User() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  // const [userProfile, setUserProfile] = useState({});
 
   const { userId } = useParams();
   const userProfile = useSelector((state) => state.userReducer);
-  console.log("******", userProfile);
+  // console.log("******", userProfile);
 
   // console.log("In User.js, currentUser = ", currentUser);
   // console.log("In User.js, userId = ", userId);
@@ -25,7 +25,7 @@ function User() {
     dispatch(getAUser(Number(userId)));
   }, [dispatch, userId]);
 
-  console.log(userProfile.avatar === null);
+  // console.log(userProfile.avatar === null);
 
   return (
     <div>
@@ -38,7 +38,10 @@ function User() {
         ></img>
       )}
       {currentUser.id === Number(userId) ? (
-        <UploadAvatarModal userId={userId} />
+        <>
+          <UploadAvatarModal userId={userId} />
+          <DeleteAvatarModal userId={userId} />
+        </>
       ) : null}
       <ul>
         <li>

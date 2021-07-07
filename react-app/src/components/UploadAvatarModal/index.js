@@ -11,17 +11,17 @@ const UploadAvatarModal = ({ userId }) => {
   const history = useHistory();
 
   const [avatar, setAvatar] = useState(null);
-  const [uploading, setUploading] = useState(false);
+  // const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("avatar", avatar);
 
-    setUploading(true);
+    // setUploading(true);
     dispatch(uploadAvatar(formData, userId));
     setShowModal(false);
-    setUploading(false);
+    // setUploading(false);
     history.push(`/users/${user.id}`);
   };
 
@@ -32,9 +32,16 @@ const UploadAvatarModal = ({ userId }) => {
 
   return (
     <div>
-      <button id="edit-profile" onClick={() => setShowModal(true)}>
-        Add A Profile Image
-      </button>
+      {user.avatar === null ? (
+        <button id="edit-profile" onClick={() => setShowModal(true)}>
+          Add A Profile Image
+        </button>
+      ) : (
+        <button id="edit-profile" onClick={() => setShowModal(true)}>
+          Change Profile Image
+        </button>
+      )}
+
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={handleSubmit}>

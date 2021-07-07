@@ -55,3 +55,13 @@ def upload_avatar(id):
     db.session.add(user)
     db.session.commit()
     return user.to_dict()
+
+
+@user_routes.route("/<int:id>/avatar", methods=["PUT"])
+@login_required
+def remove_avatar(id):
+    user = User.query.get(id)
+    user.avatar = None
+    db.session.add(user)
+    db.session.commit()
+    return user.to_dict()
