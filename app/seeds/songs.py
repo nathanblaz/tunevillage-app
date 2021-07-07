@@ -6,28 +6,28 @@ def seed_songs():
         title='Monolith',
         song_url='https://tunevillage-app.s3.us-west-1.amazonaws.com/Fugal+-+Parallels+-+01+A1.+Monolith.mp3',
         song_art='https://tunevillage-app.s3.us-west-1.amazonaws.com/cover.png',
-        user_id=2,
+        artist_id=1,
         pinned=False
     )
     song2 = Song(
         title='Plurality',
         song_url='https://tunevillage-app.s3.us-west-1.amazonaws.com/Fugal+-+Parallels+-+02+A2.+Plurality.mp3',
         song_art='https://tunevillage-app.s3.us-west-1.amazonaws.com/cover.png',
-        user_id=2,
+        artist_id=1,
         pinned=False
     )
     song3 = Song(
         title='Parallels',
-        song_url='https://tunevillage-app.s3.us-west-1.amazonaws.com/Fugal+-+Parallels+-+01+A1.+Monolith.mp3',
+        song_url='https://tunevillage-app.s3.us-west-1.amazonaws.com/Fugal+-+Parallels+-+03+B1.+Parallels.mp3',
         song_art='https://tunevillage-app.s3.us-west-1.amazonaws.com/cover.png',
-        user_id=2,
+        artist_id=1,
         pinned=True
     )
     song4 = Song(
         title='Arrival',
         song_url='https://tunevillage-app.s3.us-west-1.amazonaws.com/Fugal+-+Parallels+-+04+B2.+Arrival.mp3',
         song_art='https://tunevillage-app.s3.us-west-1.amazonaws.com/cover.png',
-        user_id=2,
+        artist_id=1,
         pinned=False
     )
     db.session.add(song1)
