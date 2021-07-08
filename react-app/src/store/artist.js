@@ -1,5 +1,6 @@
 // constants
 const SET_ARTISTS = "artist/SET_ARTISTS";
+const ADD_ARTIST = "artist/ADD_ARTIST";
 const ADD_AVATAR = "artist/ADD_AVATAR";
 const GET_ARTIST = "artist/GET_ARTIST";
 const DELETE_AVATAR = "artist/DELETE_AVATAR";
@@ -9,6 +10,11 @@ const DELETE_AVATAR = "artist/DELETE_AVATAR";
 const setArtists = (artists) => ({
   type: SET_ARTISTS,
   payload: artists,
+});
+
+const addArtist = (artist) => ({
+  type: ADD_ARTIST,
+  payload: artist,
 });
 
 const addAvatar = (avatar) => ({
@@ -36,6 +42,20 @@ export const getArtists = (id) => async (dispatch) => {
   } else {
     console.log("error--getArtists thunk");
     console.log(res);
+  }
+};
+
+export const createArtist = (formData) => async (dispatch) => {
+  const res = await fetch("/api/artists/new", {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    const newArtist = await res.json();
+    dispatch(addArtist(newArtist));
+    return newArtist;
+  } else {
+    console.log("error--upload Album thunk (fetch call)");
   }
 };
 
@@ -84,6 +104,9 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ARTISTS:
       return { ...action.payload };
+    case ADD_ARTIST:
+      newState[action.payload] = action.payload;
+      return newState;
     case GET_ARTIST:
       return { ...action.payload };
     case ADD_AVATAR:

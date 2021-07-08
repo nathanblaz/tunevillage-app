@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { createArtist } from "../../store/artist";
+import { createArtist } from "../../store/artist";
 
 const CreateArtist = () => {
   const history = useHistory();
@@ -20,8 +20,13 @@ const CreateArtist = () => {
     formData.append("bio", bio);
     formData.append("user_id", user.id);
 
-    // dispatch(createArtist(formData));
+    dispatch(createArtist(formData));
     history.push(`/users/${user.id}`);
+  };
+
+  const updateAvatar = (e) => {
+    const file = e.target.files[0];
+    setAvatar(file);
   };
 
   return (
@@ -41,7 +46,12 @@ const CreateArtist = () => {
           </label>
           <label className="form-input">
             Artist Profile Image
-            <input type="file" name="file_upload" onChange={setAvatar} />
+            <input
+              type="file"
+              accept="image/*"
+              name="file_upload"
+              onChange={updateAvatar}
+            />
           </label>
           <label className="form-input">
             Artist Bio

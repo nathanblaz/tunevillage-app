@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getArtists } from "../../store/artist";
+import uuid from "node-uuid";
 
 function ArtistsList() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function ArtistsList() {
 
   const artistListItems = artists.map((artist) => {
     return (
-      <li key={artist.id}>
+      <li key={uuid()}>
         <NavLink to={`/artists/${artist.id}`}>{artist.artistname}</NavLink>
       </li>
     );
