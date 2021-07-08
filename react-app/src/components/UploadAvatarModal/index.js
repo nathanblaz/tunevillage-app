@@ -2,26 +2,26 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { uploadAvatar } from "../../store/user";
+import { uploadAvatar } from "../../store/artist";
 
-const UploadAvatarModal = ({ userId }) => {
+const UploadAvatarModal = ({ artistId }) => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [avatar, setAvatar] = useState(null);
-  const [uploading, setUploading] = useState(false);
+  // const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("avatar", avatar);
 
-    setUploading(true);
-    dispatch(uploadAvatar(formData, userId));
+    // setUploading(true);
+    dispatch(uploadAvatar(formData, artistId));
     setShowModal(false);
-    setUploading(false);
+    // setUploading(false);
     history.push(`/users/${user.id}`);
   };
 
@@ -32,9 +32,16 @@ const UploadAvatarModal = ({ userId }) => {
 
   return (
     <div>
-      <button id="edit-profile" onClick={() => setShowModal(true)}>
-        Add A Profile Image
-      </button>
+      {user.avatar === null ? (
+        <button id="edit-profile" onClick={() => setShowModal(true)}>
+          Add A Profile Image
+        </button>
+      ) : (
+        <button id="edit-profile" onClick={() => setShowModal(true)}>
+          Change Profile Image
+        </button>
+      )}
+
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={handleSubmit}>
