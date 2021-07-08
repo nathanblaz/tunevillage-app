@@ -17,15 +17,14 @@ class Artist(db.Model):
     users = db.relationship('User', back_populates='artists')
     songs = db.relationship('Song', back_populates='artists')
 
-
-def to_dict(self):
-    return {
-        'id': self.id,
-        'artistname': self.artistname,
-        'avatar': self.avatar,
-        'bio': self.bio,
-        'created_at': self.created_at,
-        'updated_at': self.updated_at,
-        'user_id': self.user_id,
-        'songs': [song.id for song in self.songs]
-    }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'artistname': self.artistname,
+            'avatar': self.avatar,
+            'bio': self.bio,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user_id': self.user_id,
+            'songs': [song.to_dict() for song in self.songs]
+        }

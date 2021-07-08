@@ -14,7 +14,7 @@ function Artist() {
   const artistProfile = useSelector((state) => state.artistReducer);
 
   useEffect(() => {
-    dispatch(getAUser(Number(artistId)));
+    dispatch(getAnArtist(Number(artistId)));
   }, [dispatch, artistId]);
 
   return (

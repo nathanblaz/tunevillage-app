@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { uploadAvatar } from "../../store/user";
+import { uploadAvatar } from "../../store/artist";
 
-const UploadAvatarModal = ({ userId }) => {
+const UploadAvatarModal = ({ artistId }) => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const UploadAvatarModal = ({ userId }) => {
     formData.append("avatar", avatar);
 
     // setUploading(true);
-    dispatch(uploadAvatar(formData, userId));
+    dispatch(uploadAvatar(formData, artistId));
     setShowModal(false);
     // setUploading(false);
     history.push(`/users/${user.id}`);

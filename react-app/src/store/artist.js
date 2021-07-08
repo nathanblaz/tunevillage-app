@@ -1,6 +1,6 @@
 // constants
 const ADD_AVATAR = "artist/ADD_AVATAR";
-const GET_ARTIST = "artist/GET_USER";
+const GET_ARTIST = "artist/GET_ARTIST";
 const DELETE_AVATAR = "artist/DELETE)AVATAR";
 
 // action creators
@@ -11,7 +11,7 @@ const addAvatar = (avatar) => ({
 });
 
 const getArtist = (artist) => ({
-  type: GET_USER,
+  type: GET_ARTIST,
   payload: artist,
 });
 
@@ -70,7 +70,7 @@ export default function artistReducer(state = initialState, action) {
     case DELETE_AVATAR:
       const removeAvatarState = { ...action.payload };
       return removeAvatarState;
-    case GET_USER:
+    case GET_ARTIST:
       return { ...action.payload };
     default:
       return state;

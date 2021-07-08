@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { removeAvatar } from "../../store/user";
+import { removeAvatar } from "../../store/artist";
 
-const DeleteAvatarModal = ({ userId }) => {
+const DeleteAvatarModal = ({ artistId }) => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const DeleteAvatarModal = ({ userId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(removeAvatar(userId));
+    dispatch(removeAvatar(artistId));
     setShowModal(false);
     history.push(`/users/${user.id}`);
   };

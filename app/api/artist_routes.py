@@ -13,19 +13,19 @@ def artists():
     return {'artists': [artist.to_dict() for artist in artists]}
 
 
-@artist_routes.route('/<int>:id>')
+@artist_routes.route('/<int:id>')
 def artist(id):
     artist = Artist.query.get(id)
     return artist.to_dict()
 
 
-@artist_routes.route('<int:id>/songs')
+@artist_routes.route('/<int:id>/songs')
 def artist_songs(id):
     songs = Song.query.filter(Song.artist_id == id).all()
     return {'songs': [artist.to_dict() for song in songs]}
 
 
-@artist_routes.route('< int: id > /avatar, methods=["POST])
+@artist_routes.route('/<int:id>/avatar', methods=["POST"])
 @login_required
 def upload_avatar(id):
     if "avatar" not in request.files:
