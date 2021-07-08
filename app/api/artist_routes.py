@@ -94,3 +94,17 @@ def remove_avatar(id):
     db.session.add(artist)
     db.session.commit()
     return artist.to_dict()
+
+
+@artist_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_artist(id):
+    artist = Artist.query.get(id)
+    url = avatar.image_url
+    filename = url.removeprefix('http://tunevilaage-app.s3.amazonaws.com/')
+    delete_file_from_s3(filename)
+    if not photo:
+        return jsonify("avatar image not found")
+    db.session.delete(artist)
+    db.session.commit()
+    return {'id': id}

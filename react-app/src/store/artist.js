@@ -1,6 +1,7 @@
 // constants
 const SET_ARTISTS = "artist/SET_ARTISTS";
 const ADD_ARTIST = "artist/ADD_ARTIST";
+const DELETE_ARTIST = "artist/DELETE_ARTIST";
 const ADD_AVATAR = "artist/ADD_AVATAR";
 const GET_ARTIST = "artist/GET_ARTIST";
 const DELETE_AVATAR = "artist/DELETE_AVATAR";
@@ -14,6 +15,11 @@ const setArtists = (artists) => ({
 
 const addArtist = (artist) => ({
   type: ADD_ARTIST,
+  payload: artist,
+});
+
+const deleteArtist = (artist) => ({
+  type: DELETE_ARTIST,
   payload: artist,
 });
 
@@ -70,6 +76,13 @@ export const getAnArtist = (artistId) => async (dispatch) => {
   }
 };
 
+export const deleteAnArtist = (id) => async (dispatch) => {
+  const res = await fetch(`/api/artists/${id}`, {
+    method: "DELETE",
+  });
+  dispatch(deleteArtist(id));
+};
+
 export const uploadAvatar = (formData, artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}/avatar`, {
     method: "POST",
@@ -109,6 +122,12 @@ export default function reducer(state = initialState, action) {
       return newState;
     case GET_ARTIST:
       return { ...action.payload };
+    case DELETE_ARTIST:
+      const oldState = {
+        ...state,
+      };
+      delete oldState[action.payload.id];
+      return oldState;
     case ADD_AVATAR:
       newState[action.payload] = action.payload;
       return newState;

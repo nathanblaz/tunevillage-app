@@ -13,7 +13,12 @@ function Artist() {
   const { artistId } = useParams();
   const artistProfile = useSelector((state) => state.artist);
 
-  // console.log("In Artist.js, artistProfile = ", artistProfile);
+  console.log("In Artist.js, currentUser.id = ", currentUser.id);
+  console.log("In Artist.js, artistId.id = ", currentUser.id);
+  console.log(
+    "In Artist.js, currentUser.id === Number(artistProfile.user_id) : ",
+    currentUser.id === Number(artistProfile.user_id)
+  );
 
   useEffect(() => {
     dispatch(getAnArtist(Number(artistId)));
@@ -29,19 +34,13 @@ function Artist() {
           alt="blank-avatar"
         ></img>
       )}
-      {currentUser.id === Number(artistId.user_id) ? (
+      {currentUser.id === Number(artistProfile.user_id) ? (
         <>
           <UploadAvatarModal artistId={artistId} />
           <DeleteAvatarModal artistId={artistId} />
         </>
       ) : null}
       <ul>
-        <li>
-          <strong>Artist Id</strong> {artistId}
-        </li>
-        <li>
-          <strong>Username</strong> {artistProfile.artistname}
-        </li>
         <li>
           <strong>Bio</strong> {artistProfile.bio}
         </li>
