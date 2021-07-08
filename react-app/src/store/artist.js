@@ -1,9 +1,15 @@
 // constants
+const SET_ARTISTS = "artist/SET_ARTISTS";
 const ADD_AVATAR = "artist/ADD_AVATAR";
 const GET_ARTIST = "artist/GET_ARTIST";
 const DELETE_AVATAR = "artist/DELETE_AVATAR";
 
 // action creators
+
+const setArtists = (artists) => ({
+  type: SET_ARTISTS,
+  payload: artists,
+});
 
 const addAvatar = (avatar) => ({
   type: ADD_AVATAR,
@@ -21,6 +27,17 @@ const deleteAvatar = (avatar) => ({
 });
 
 // thunks
+
+export const getArtists = (id) => async (dispatch) => {
+  const res = await fetch(`/api/artists/`);
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(setArtists(data.artists));
+  } else {
+    console.log("error--getArtists thunk");
+    console.log(res);
+  }
+};
 
 export const getAnArtist = (artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}`);
@@ -65,14 +82,16 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   const newState = { ...state };
   switch (action.type) {
+    case SET_ARTISTS:
+      return { ...action.payload };
+    case GET_ARTIST:
+      return { ...action.payload };
     case ADD_AVATAR:
       newState[action.payload] = action.payload;
       return newState;
     case DELETE_AVATAR:
       delete newState[action.payload];
       return newState;
-    case GET_ARTIST:
-      return { ...action.payload };
     default:
       return state;
   }
