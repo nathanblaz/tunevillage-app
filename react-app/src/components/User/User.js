@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import ListSongs from "../ListSongs";
-import UploadAvatarModal from "../UploadAvatarModal";
-import DeleteAvatarModal from "../DeleteAvatarModal";
 import { getAUser } from "../../store/user";
 
 function User() {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.session.user);
+  // const currentUser = useSelector((state) => state.session.user);
 
   const { userId } = useParams();
   const userProfile = useSelector((state) => state.userReducer);
@@ -24,8 +21,6 @@ function User() {
   useEffect(() => {
     dispatch(getAUser(Number(userId)));
   }, [dispatch, userId]);
-
-  // console.log(userProfile.avatar === null);
 
   return (
     <div>

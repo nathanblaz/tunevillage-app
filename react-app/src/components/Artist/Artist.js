@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import ListSongs from "../ListSongs";
+import SongsList from "../SongsList";
 import UploadAvatarModal from "../UploadAvatarModal";
 import DeleteAvatarModal from "../DeleteAvatarModal";
 import { getAnArtist } from "../../store/artist";
@@ -11,7 +11,9 @@ function Artist() {
   const currentUser = useSelector((state) => state.session.user);
 
   const { artistId } = useParams();
-  const artistProfile = useSelector((state) => state.artistReducer);
+  const artistProfile = useSelector((state) => state.artist);
+
+  // console.log("In Artist.js, artistProfile = ", artistProfile);
 
   useEffect(() => {
     dispatch(getAnArtist(Number(artistId)));
@@ -38,16 +40,13 @@ function Artist() {
           <strong>Artist Id</strong> {artistId}
         </li>
         <li>
-          <strong>Username</strong> {artistProfile.username}
-        </li>
-        <li>
-          <strong>Email</strong> {artistProfile.email}
+          <strong>Username</strong> {artistProfile.artistname}
         </li>
         <li>
           <strong>Bio</strong> {artistProfile.bio}
         </li>
       </ul>
-      <ListSongs artistId={artistId} />
+      <SongsList artistId={artistId} />
     </div>
   );
 }

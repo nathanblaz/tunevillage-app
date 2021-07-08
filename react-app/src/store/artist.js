@@ -1,7 +1,7 @@
 // constants
 const ADD_AVATAR = "artist/ADD_AVATAR";
 const GET_ARTIST = "artist/GET_ARTIST";
-const DELETE_AVATAR = "artist/DELETE)AVATAR";
+const DELETE_AVATAR = "artist/DELETE_AVATAR";
 
 // action creators
 
@@ -62,14 +62,15 @@ export const removeAvatar = (artistId) => async (dispatch) => {
 // reducer
 const initialState = {};
 
-export default function artistReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
+  const newState = { ...state };
   switch (action.type) {
     case ADD_AVATAR:
-      const newAvatarState = { ...action.payload };
-      return newAvatarState;
+      newState[action.payload] = action.payload;
+      return newState;
     case DELETE_AVATAR:
-      const removeAvatarState = { ...action.payload };
-      return removeAvatarState;
+      delete newState[action.payload];
+      return newState;
     case GET_ARTIST:
       return { ...action.payload };
     default:

@@ -9,13 +9,13 @@ const setSongs = (song) => ({
 
 // thunks
 
-export const renderUserSongs = (id) => async (dispatch) => {
-  const res = await fetch(`/api/users/${id}/songs`);
+export const renderArtistSongs = (id) => async (dispatch) => {
+  const res = await fetch(`/api/artists/${id}/songs`);
   if (res.ok) {
     const data = await res.json();
     dispatch(setSongs(data.songs));
   } else {
-    console.log("This user has no songs");
+    console.log("This artist has no songs");
   }
 };
 
@@ -23,7 +23,7 @@ export const renderUserSongs = (id) => async (dispatch) => {
 
 const initialState = {};
 
-export default function songReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_SONGS:
       const newState = {};

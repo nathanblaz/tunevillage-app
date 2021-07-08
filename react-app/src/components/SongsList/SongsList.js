@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { renderUserSongs } from "../../store/song";
+import { renderArtistSongs } from "../../store/song";
 
-const ListSongs = ({ userId }) => {
+const SongsList = ({ artistId }) => {
   const dispatch = useDispatch();
-  const songs = useSelector((state) => Object.values(state.songReducer));
+  const songs = useSelector((state) => Object.values(state.song));
+
+  // console.log("In SongsList.js, songs = ", songs);
 
   //   console.log("In ListSongs.js, userId = ", userId);
   useEffect(() => {
-    dispatch(renderUserSongs(userId));
-  }, [dispatch, userId]);
+    dispatch(renderArtistSongs(artistId));
+  }, [dispatch, artistId]);
 
   return (
     <div className="song-container">
@@ -25,4 +27,4 @@ const ListSongs = ({ userId }) => {
   );
 };
 
-export default ListSongs;
+export default SongsList;

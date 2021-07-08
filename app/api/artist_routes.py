@@ -22,7 +22,7 @@ def artist(id):
 @artist_routes.route('/<int:id>/songs')
 def artist_songs(id):
     songs = Song.query.filter(Song.artist_id == id).all()
-    return {'songs': [artist.to_dict() for song in songs]}
+    return {'songs': [song.to_dict() for song in songs]}
 
 
 @artist_routes.route('/<int:id>/avatar', methods=["POST"])
