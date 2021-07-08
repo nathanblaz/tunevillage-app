@@ -9,9 +9,9 @@ function ArtistsList() {
 
   useEffect(() => {
     dispatch(getArtists());
-  }, [dispatch, getArtists]);
+  }, [dispatch]);
 
-  console.log("In ArtistsList.js, artists = ", artists);
+  // console.log("In ArtistsList.js, artists = ", artists);
 
   const artistListItems = artists.map((artist) => {
     return (

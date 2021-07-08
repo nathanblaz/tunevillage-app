@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAUser } from "../../store/user";
 
@@ -35,6 +35,12 @@ function User() {
           <strong>Email</strong> {userProfile.email}
         </li>
       </ul>
+      <div className="user-artists">
+        <h2>Your Artists</h2>
+      </div>
+      <button type="button" id="create-artist-button">
+        <NavLink to={`/users/${userId}/new-artist`}>Create An Artist</NavLink>
+      </button>
     </div>
   );
 }
