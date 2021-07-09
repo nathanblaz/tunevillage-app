@@ -80,12 +80,17 @@ export const deleteAnArtist = (id) => async (dispatch) => {
   const res = await fetch(`/api/artists/${id}`, {
     method: "DELETE",
   });
-  dispatch(deleteArtist(id));
+  if (res.ok) {
+    dispatch(deleteArtist(id));
+  } else {
+    console.log("error--deleteAnArtist thunk");
+    console.log(res);
+  }
 };
 
 export const uploadAvatar = (formData, artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}/avatar`, {
-    method: "POST",
+    method: "PUT",
     body: formData,
   });
   if (res.ok) {
@@ -118,8 +123,9 @@ export default function reducer(state = initialState, action) {
     case SET_ARTISTS:
       return { ...action.payload };
     case ADD_ARTIST:
-      newState[action.payload] = action.payload;
-      return newState;
+      // newState[action.payload] = action.payload;
+      // return newState;
+      return { ...action.payload };
     case GET_ARTIST:
       return { ...action.payload };
     case DELETE_ARTIST:
@@ -129,8 +135,7 @@ export default function reducer(state = initialState, action) {
       delete oldState[action.payload.id];
       return oldState;
     case ADD_AVATAR:
-      newState[action.payload] = action.payload;
-      return newState;
+      return { ...action.payload };
     case DELETE_AVATAR:
       delete newState[action.payload];
       return newState;

@@ -57,7 +57,7 @@ def create_artist():
     return new_artist.to_dict()
 
 
-@artist_routes.route('/<int:id>/avatar', methods=["POST"])
+@artist_routes.route('/<int:id>/avatar', methods=["PUT"])
 @login_required
 def upload_avatar(id):
     if "avatar" not in request.files:
