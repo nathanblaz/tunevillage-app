@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import SongsList from "../SongsList";
 import UploadAvatarModal from "../UploadAvatarModal";
-import DeleteAvatarModal from "../DeleteAvatarModal";
+import UpdateBioModal from "../UpdateBioModal";
+// import DeleteAvatarModal from "../DeleteAvatarModal";
 import { getAnArtist } from "../../store/artist";
 
 function Artist() {
@@ -40,11 +41,12 @@ function Artist() {
           {/* <DeleteAvatarModal artistId={artistId} /> */}
         </>
       ) : null}
-      <ul>
-        <li>
-          <strong>Bio</strong> {artistProfile.bio}
-        </li>
-      </ul>
+      <div>
+        <strong>Bio</strong> {artistProfile.bio}
+        {currentUser.id === Number(artistProfile.user_id) ? (
+          <UpdateBioModal artistBio={artistProfile.bio} artistId={artistId} />
+        ) : null}
+      </div>
       <SongsList artistId={artistId} />
     </div>
   );
