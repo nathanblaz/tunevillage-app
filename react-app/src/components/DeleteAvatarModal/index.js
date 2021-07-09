@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { removeAvatar } from "../../store/artist";
+import { removeAvatar, getAnArtist } from "../../store/artist";
 
 const DeleteAvatarModal = ({ artistId }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,9 +13,15 @@ const DeleteAvatarModal = ({ artistId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(removeAvatar(artistId));
+    history.push(`/`);
+    history.goBack();
     setShowModal(false);
-    history.push(`/users/${user.id}`);
+
   };
+
+  useEffect(() => {
+    dispatch(getAnArtist(parseInt(artistId)));
+  }, [dispatch, artistId]);
 
   return (
     <div>

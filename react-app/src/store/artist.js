@@ -1,5 +1,7 @@
 // constants
 const SET_ARTISTS = "artist/SET_ARTISTS";
+const ADD_ARTIST = "artist/ADD_ARTIST";
+const DELETE_ARTIST = "artist/DELETE_ARTIST";
 const ADD_AVATAR = "artist/ADD_AVATAR";
 const GET_ARTIST = "artist/GET_ARTIST";
 const DELETE_AVATAR = "artist/DELETE_AVATAR";
@@ -9,6 +11,16 @@ const DELETE_AVATAR = "artist/DELETE_AVATAR";
 const setArtists = (artists) => ({
   type: SET_ARTISTS,
   payload: artists,
+});
+
+const addArtist = (artist) => ({
+  type: ADD_ARTIST,
+  payload: artist,
+});
+
+const deleteArtist = (artist) => ({
+  type: DELETE_ARTIST,
+  payload: artist,
 });
 
 const addAvatar = (avatar) => ({
@@ -39,6 +51,20 @@ export const getArtists = (id) => async (dispatch) => {
   }
 };
 
+export const createArtist = (formData) => async (dispatch) => {
+  const res = await fetch("/api/artists/new", {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    const newArtist = await res.json();
+    dispatch(addArtist(newArtist));
+    return newArtist;
+  } else {
+    console.log("error--upload Album thunk (fetch call)");
+  }
+};
+
 export const getAnArtist = (artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}`);
   if (res.ok) {
@@ -50,9 +76,21 @@ export const getAnArtist = (artistId) => async (dispatch) => {
   }
 };
 
+export const deleteAnArtist = (id) => async (dispatch) => {
+  const res = await fetch(`/api/artists/${id}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(deleteArtist(id));
+  } else {
+    console.log("error--deleteAnArtist thunk");
+    console.log(res);
+  }
+};
+
 export const uploadAvatar = (formData, artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}/avatar`, {
-    method: "POST",
+    method: "PUT",
     body: formData,
   });
   if (res.ok) {
@@ -65,7 +103,7 @@ export const uploadAvatar = (formData, artistId) => async (dispatch) => {
 };
 
 export const removeAvatar = (artistId) => async (dispatch) => {
-  const res = await fetch(`/api/artists/${artistId}/avatar`, {
+  const res = await fetch(`/api/artists/${artistId}/avatar/delete`, {
     method: "PUT",
   });
   if (res.ok) {
@@ -84,11 +122,20 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ARTISTS:
       return { ...action.payload };
-    case GET_ARTIST:
-      return { ...action.payload };
-    case ADD_AVATAR:
+    case ADD_ARTIST:
       newState[action.payload] = action.payload;
       return newState;
+      // return { ...action.payload };
+    case GET_ARTIST:
+      return { ...action.payload };
+    case DELETE_ARTIST:
+      const oldState = {
+        ...state,
+      };
+      delete oldState[action.payload.id];
+      return oldState;
+    case ADD_AVATAR:
+      return { ...action.payload };
     case DELETE_AVATAR:
       delete newState[action.payload];
       return newState;

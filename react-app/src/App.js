@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import ArtistsList from "./components/ArtistsList";
 import Artist from "./components/Artist";
+import ArtistCreate from "./components/ArtistCreate";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId/new-artist" exact={true}>
+          <ArtistCreate />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>

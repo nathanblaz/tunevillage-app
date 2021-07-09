@@ -45,16 +45,16 @@ const NavBar = () => {
       >
         <img id="logo" src={logo} alt="Tunevillage"></img>
       </NavLink>
+      <NavLink
+        className="navlinks"
+        to="/artists"
+        exact={true}
+        activeClassName="active"
+      >
+        Artists
+      </NavLink>
       {user ? (
         <>
-          <NavLink
-            className="navlinks"
-            to="/users"
-            exact={true}
-            activeClassName="active"
-          >
-            Users
-          </NavLink>
           <div id="menu-container">
             <button id="user-button" onClick={openMenu}>
               <i className="avatar-circle" />
