@@ -41,11 +41,11 @@ function User() {
       <button type="button" id="create-artist-button">
         <NavLink to={`/users/${userId}/new-artist`}>Create An Artist</NavLink>
       </button>
-      {/* <button type="button" id="delete-artist-button">
+      <button type="button" id="delete-artist-button">
         <NavLink to={`/users/${userId}/delete-artist`}>
           Delete An Artist
         </NavLink>
-      </button> */}
+      </button>
     </div>
   );
 }
