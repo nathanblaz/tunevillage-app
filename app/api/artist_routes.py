@@ -86,7 +86,7 @@ def upload_avatar(id):
     return artist.to_dict()
 
 
-@artist_routes.route("/<int:id>/avatar", methods=["PUT"])
+@artist_routes.route("/<int:id>/avatar/delete", methods=["PUT"])
 @login_required
 def remove_avatar(id):
     artist = Artist.query.get(id)

@@ -37,7 +37,7 @@ function Artist() {
       {currentUser.id === Number(artistProfile.user_id) ? (
         <>
           <UploadAvatarModal artistId={artistId} />
-          <DeleteAvatarModal artistId={artistId} />
+          {/* <DeleteAvatarModal artistId={artistId} /> */}
         </>
       ) : null}
       <ul>

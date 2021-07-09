@@ -103,7 +103,7 @@ export const uploadAvatar = (formData, artistId) => async (dispatch) => {
 };
 
 export const removeAvatar = (artistId) => async (dispatch) => {
-  const res = await fetch(`/api/artists/${artistId}/avatar`, {
+  const res = await fetch(`/api/artists/${artistId}/avatar/delete`, {
     method: "PUT",
   });
   if (res.ok) {
@@ -123,9 +123,9 @@ export default function reducer(state = initialState, action) {
     case SET_ARTISTS:
       return { ...action.payload };
     case ADD_ARTIST:
-      // newState[action.payload] = action.payload;
-      // return newState;
-      return { ...action.payload };
+      newState[action.payload] = action.payload;
+      return newState;
+      // return { ...action.payload };
     case GET_ARTIST:
       return { ...action.payload };
     case DELETE_ARTIST:
