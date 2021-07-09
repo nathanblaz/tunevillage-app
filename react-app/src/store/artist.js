@@ -4,7 +4,7 @@ const ADD_ARTIST = "artist/ADD_ARTIST";
 const DELETE_ARTIST = "artist/DELETE_ARTIST";
 const ADD_AVATAR = "artist/ADD_AVATAR";
 const GET_ARTIST = "artist/GET_ARTIST";
-const DELETE_AVATAR = "artist/DELETE_AVATAR";
+const UPDATE_BIO = "artist/UPDATE_BIO";
 
 // action creators
 
@@ -33,9 +33,9 @@ const getArtist = (artist) => ({
   payload: artist,
 });
 
-const deleteAvatar = (avatar) => ({
-  type: DELETE_AVATAR,
-  payload: avatar,
+const updateBio = (artist) => ({
+  type: UPDATE_BIO,
+  payload: artist,
 });
 
 // thunks
@@ -102,14 +102,16 @@ export const uploadAvatar = (formData, artistId) => async (dispatch) => {
   }
 };
 
-export const removeAvatar = (artistId) => async (dispatch) => {
-  const res = await fetch(`/api/artists/${artistId}/avatar/delete`, {
+export const updateABio = (formData, artistId) => async (dispatch) => {
+  const res = await fetch(`/api/artists/${artistId}/bio`, {
     method: "PUT",
+    body: formData,
   });
   if (res.ok) {
-    dispatch(deleteAvatar(artistId));
+    const data = await res.json();
+    dispatch(updateBio(data));
   } else {
-    console.log("error--removeAvatar thunk");
+    console.log("error--updateABio thunk");
     console.log(res);
   }
 };
@@ -125,7 +127,7 @@ export default function reducer(state = initialState, action) {
     case ADD_ARTIST:
       newState[action.payload] = action.payload;
       return newState;
-      // return { ...action.payload };
+    // return { ...action.payload };
     case GET_ARTIST:
       return { ...action.payload };
     case DELETE_ARTIST:
@@ -136,9 +138,8 @@ export default function reducer(state = initialState, action) {
       return oldState;
     case ADD_AVATAR:
       return { ...action.payload };
-    case DELETE_AVATAR:
-      delete newState[action.payload];
-      return newState;
+    case UPDATE_BIO:
+      return { ...action.payload };
     default:
       return state;
   }
