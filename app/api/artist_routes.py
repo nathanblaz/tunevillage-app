@@ -86,11 +86,11 @@ def upload_avatar(id):
     return artist.to_dict()
 
 
-@artist_routes.route("/<int:id>/avatar/delete", methods=["PUT"])
+@artist_routes.route("/<int:id>/bio", methods=["PUT"])
 @login_required
-def remove_avatar(id):
+def update_bio(id):
     artist = Artist.query.get(id)
-    artist.avatar = None
+    artist.bio = request.form["bio"]
     db.session.add(artist)
     db.session.commit()
     return artist.to_dict()
