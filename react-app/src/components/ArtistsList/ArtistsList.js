@@ -9,14 +9,15 @@ function ArtistsList() {
 
   useEffect(() => {
     dispatch(getArtists());
-  }, [dispatch, getArtists]);
+  }, [dispatch]);
 
-  console.log("In ArtistsList.js, artists = ", artists);
+  // console.log("In ArtistsList.js, artists = ", artists);
 
-  const artistListItems = artists.map((artist) => {
+  const artistListItems = artists.map((artist, index) => {
     return (
-      <li key={artist.id}>
-        <NavLink to={`/artists/${artist.id}`}>{artist.artistname}</NavLink>
+      <li key={index}>
+      
+        <NavLink to={`/artists/${artist.id}`}><img src={artist.avatar} alt="avatar"></img>{artist.artistname}</NavLink>
       </li>
     );
   });

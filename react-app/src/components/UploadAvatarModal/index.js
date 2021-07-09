@@ -1,34 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { uploadAvatar } from "../../store/artist";
+// import { useHistory } from "react-router-dom";
+import { uploadAvatar, getAnArtist } from "../../store/artist";
 
 const UploadAvatarModal = ({ artistId }) => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const [avatar, setAvatar] = useState(null);
-  // const [uploading, setUploading] = useState(false);
+
+  const updateAvatar = (e) => {
+    const file = e.target.files[0];
+    setAvatar(file);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("avatar", avatar);
 
-    // setUploading(true);
     dispatch(uploadAvatar(formData, artistId));
+    // history.push(`/`);
+    // history.goBack();
     setShowModal(false);
-    // setUploading(false);
-    history.push(`/users/${user.id}`);
+    // history.push(`/artists/${artistId}`);
   };
 
-  const updateAvatar = (e) => {
-    const file = e.target.files[0];
-    setAvatar(file);
-  };
+  useEffect(() => {
+    dispatch(getAnArtist(parseInt(artistId)));
+  }, [dispatch, artistId]);
 
   return (
     <div>
