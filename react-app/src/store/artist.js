@@ -52,6 +52,7 @@ export const getArtists = (id) => async (dispatch) => {
 };
 
 export const createArtist = (formData) => async (dispatch) => {
+  console.log("Inside of createArtist thunk line 55, formData = ", formData);
   const res = await fetch("/api/artists/new", {
     method: "POST",
     body: formData,
@@ -62,6 +63,7 @@ export const createArtist = (formData) => async (dispatch) => {
     return newArtist;
   } else {
     console.log("error--upload createArtist thunk (fetch call)");
+    console.log("Inside of createArtist thunk line 66, formData = ", formData);
   }
 };
 

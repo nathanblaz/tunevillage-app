@@ -28,6 +28,7 @@ def artist_songs(id):
 @artist_routes.route('/new', methods=["POST"])
 @login_required
 def create_artist():
+    print("****We got to create_artist() on the /api/artists/new route")
     if "avatar" not in request.files:
         return {"errors": "image required"}, 400
 
