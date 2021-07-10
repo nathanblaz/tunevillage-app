@@ -54,7 +54,9 @@ export default function reducer(state = initialState, action) {
       });
       return newState;
     case ADD_SONG:
-      return { ...action.payload };
+      const addSongNewState = { ...state };
+      addSongNewState[action.payload.id] = action.payload;
+      return addSongNewState;
     default:
       return state;
   }
