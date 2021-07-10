@@ -4,6 +4,7 @@ import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong } from "../../store/song";
 import { getAnArtist } from "../../store/artist";
+import { renderArtistSongs } from "../../store/song";
 
 const CreateSongModal = ({ artistId }) => {
   const [showModal, setShowModal] = useState(false);
@@ -11,6 +12,7 @@ const CreateSongModal = ({ artistId }) => {
   //   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const idForDispatch = Number(artistId);
 
   const [title, setTitle] = useState("");
   const [song, setSong] = useState(null);
@@ -27,14 +29,18 @@ const CreateSongModal = ({ artistId }) => {
     formData.append("song", song);
     formData.append("artist_id", Number(artistId));
 
-    // console.log("Inside of SongCreate/index.js, formData = ", formData);
+    // console.log("Inside of SongCreateModal/index.js, formData = ", formData);
     setShowModal(false);
 
     dispatch(createSong(formData));
   };
 
   useEffect(() => {
-    dispatch(getAnArtist(parseInt(artistId)));
+    console.log(
+      "Inside of SongCreateModal/index.js useEffect, aristId = ",
+      artistId
+    );
+    dispatch(renderArtistSongs(artistId));
   }, [dispatch, artistId]);
 
   return (
@@ -58,7 +64,7 @@ const CreateSongModal = ({ artistId }) => {
                 />
               </label>
               <label className="form-input">
-                Artist Profile Image
+                Song
                 <input
                   type="file"
                   accept="audio/*"

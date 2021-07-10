@@ -67,8 +67,9 @@ export const createArtist = (formData) => async (dispatch) => {
   }
 };
 
-export const getAnArtist = (artistId) => async (dispatch) => {
-  const res = await fetch(`/api/artists/${artistId}`);
+export const getAnArtist = (id) => async (dispatch) => {
+  console.log("We made it to getAnArtist, artistId is:", id);
+  const res = await fetch(`/api/artists/${id}`);
   if (res.ok) {
     const artistProfile = await res.json();
     dispatch(getArtist(artistProfile));

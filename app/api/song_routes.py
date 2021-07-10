@@ -45,3 +45,32 @@ def create_song():
     db.session.commit()
     print("*******new_song is ", new_song)
     return new_song.to_dict()
+
+
+# @artist_routes.route('/<int:id>/song-art', methods=["PUT"])
+# @login_required
+# def update_song(id):
+#     if "song_art" not in request.files:
+#         return {"errors": "image required"}, 400
+
+#     song_art = request.files["song_art"]
+
+#     if not allowed_file(avatar.filename):
+#         return {"errors": "file type not permitted"}, 400
+
+#     song_art.filename = get_unique_filename(song_art.filename)
+
+#     upload = upload_file_to_s3(song_art)
+
+#     if "url" not in upload:
+#         return upload, 400
+
+#     url = upload["url"]
+
+#     # update database
+
+#     song = Song.query.get(id)
+#     song.song_art = url
+#     db.session.add(song)
+#     db.session.commit()
+#     return song.to_dict()
