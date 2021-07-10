@@ -38,8 +38,8 @@ def create_song():
         title=request.form["title"],
         song_art=None,
         song_url=url,
-        user_id=current_user.id,
-        pinned=false,
+        artist_id=request.form["artist_id"],
+        pinned=False,
     )
     db.session.add(new_song)
     db.session.commit()

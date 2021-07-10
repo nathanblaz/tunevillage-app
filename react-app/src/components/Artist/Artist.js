@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SongsList from "../SongsList";
 import UploadAvatarModal from "../UploadAvatarModal";
 import UpdateBioModal from "../UpdateBioModal";
+import SongCreateModal from "../SongCreateModal";
 // import DeleteAvatarModal from "../DeleteAvatarModal";
 import { getAnArtist } from "../../store/artist";
 
@@ -14,12 +15,12 @@ function Artist() {
   const { artistId } = useParams();
   const artistProfile = useSelector((state) => state.artist);
 
-  console.log("In Artist.js, currentUser.id = ", currentUser.id);
-  console.log("In Artist.js, artistId.id = ", currentUser.id);
-  console.log(
-    "In Artist.js, currentUser.id === Number(artistProfile.user_id) : ",
-    currentUser.id === Number(artistProfile.user_id)
-  );
+  // console.log("In Artist.js, currentUser.id = ", currentUser.id);
+  // console.log("In Artist.js, artistId.id = ", currentUser.id);
+  // console.log(
+  //   "In Artist.js, currentUser.id === Number(artistProfile.user_id) : ",
+  //   currentUser.id === Number(artistProfile.user_id)
+  // );
 
   useEffect(() => {
     dispatch(getAnArtist(Number(artistId)));
@@ -46,6 +47,9 @@ function Artist() {
         {currentUser.id === Number(artistProfile.user_id) ? (
           <UpdateBioModal artistBio={artistProfile.bio} artistId={artistId} />
         ) : null}
+      </div>
+      <div>
+        <SongCreateModal artistId={artistId} />
       </div>
       <SongsList artistId={artistId} />
     </div>
