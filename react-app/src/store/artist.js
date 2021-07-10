@@ -23,9 +23,9 @@ const deleteArtist = (artist) => ({
   payload: artist,
 });
 
-const addAvatar = (avatar) => ({
+const addAvatar = (artist) => ({
   type: ADD_AVATAR,
-  payload: avatar,
+  payload: artist,
 });
 
 const getArtist = (artist) => ({
@@ -61,7 +61,7 @@ export const createArtist = (formData) => async (dispatch) => {
     dispatch(addArtist(newArtist));
     return newArtist;
   } else {
-    console.log("error--upload Album thunk (fetch call)");
+    console.log("error--upload createArtist thunk (fetch call)");
   }
 };
 
@@ -123,11 +123,17 @@ export default function reducer(state = initialState, action) {
   const newState = { ...state };
   switch (action.type) {
     case SET_ARTISTS:
-      return { ...action.payload };
-    case ADD_ARTIST:
-      newState[action.payload] = action.payload;
-      return newState;
+      console.log("action.pahyload in SET_ARTISTS is:", action.payload);
+      const manyArtistsState = {};
+      action.payload.forEach((artist) => {
+        manyArtistsState[artist.id] = artist;
+      });
+      return manyArtistsState;
     // return { ...action.payload };
+    case ADD_ARTIST:
+      // newState[action.payload] = action.payload;
+      // return newState;
+      return { ...action.payload };
     case GET_ARTIST:
       return { ...action.payload };
     case DELETE_ARTIST:
