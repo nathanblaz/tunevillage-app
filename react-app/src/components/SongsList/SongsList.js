@@ -16,8 +16,8 @@ const SongsList = ({ artistId }) => {
   return (
     <div className="song-container">
       <ul>
-        {songs.map((song) => (
-          <li key={song.id}>
+        {songs.map((song, index) => (
+          <li key={index}>
             Song: {`${song.title}`}
             <audio controls src={`${song.song_url}`}></audio>
           </li>

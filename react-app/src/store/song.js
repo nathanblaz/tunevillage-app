@@ -1,9 +1,15 @@
 // constants
 const SET_SONGS = "song/SET_SONGS";
+const ADD_SONG = "song/ADD_SONG";
 
 // action creators
-const setSongs = (song) => ({
+const setSongs = (songs) => ({
   type: SET_SONGS,
+  payload: songs,
+});
+
+const addSong = (song) => ({
+  type: ADD_SONG,
   payload: song,
 });
 
@@ -19,6 +25,22 @@ export const renderArtistSongs = (id) => async (dispatch) => {
   }
 };
 
+export const createSong = (formData) => async (dispatch) => {
+  // console.log("Inside of createSong thunk, formData = ", formData);
+  const res = await fetch("/api/songs/new", {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    const newSong = await res.json();
+    dispatch(addSong(newSong));
+    return newSong;
+  } else {
+    console.log("error--upload createSong thunk (fetch call)");
+    console.log("Inside of createSong thunk, formData = ", formData);
+  }
+};
+
 // reducer
 
 const initialState = {};
@@ -31,7 +53,8 @@ export default function reducer(state = initialState, action) {
         newState[song.id] = song;
       });
       return newState;
-
+    case ADD_SONG:
+      return { ...action.payload };
     default:
       return state;
   }
