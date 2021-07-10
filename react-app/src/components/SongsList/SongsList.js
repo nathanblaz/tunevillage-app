@@ -4,9 +4,10 @@ import { renderArtistSongs } from "../../store/song";
 
 const SongsList = ({ artistId }) => {
   const dispatch = useDispatch();
-  const songs = useSelector((state) => Object.values(state.song));
+  // const artist =
+  const songs = Object.values(useSelector((state) => state.song));
 
-  // console.log("In SongsList.js, songs = ", songs);
+  console.log("In SongsList.js, songs = ", songs);
 
   //   console.log("In ListSongs.js, userId = ", userId);
   useEffect(() => {
@@ -16,8 +17,8 @@ const SongsList = ({ artistId }) => {
   return (
     <div className="song-container">
       <ul>
-        {songs.map((song) => (
-          <li key={song.id}>
+        {songs?.map((song, index) => (
+          <li key={index}>
             Song: {`${song.title}`}
             <audio controls src={`${song.song_url}`}></audio>
           </li>
