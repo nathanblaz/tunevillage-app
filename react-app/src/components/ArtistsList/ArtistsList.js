@@ -5,19 +5,21 @@ import { getArtists } from "../../store/artist";
 
 function ArtistsList() {
   const dispatch = useDispatch();
-  const artists = useSelector((state) => Object.values(state.artist));
+  const artists = Object.values(useSelector((state) => state.artist));
 
   useEffect(() => {
     dispatch(getArtists());
   }, [dispatch]);
 
-  // console.log("In ArtistsList.js, artists = ", artists);
+  console.log("In ArtistsList.js, artists = ", artists);
 
   const artistListItems = artists.map((artist, index) => {
     return (
       <li key={index}>
-      
-        <NavLink to={`/artists/${artist.id}`}><img src={artist.avatar} alt="avatar"></img>{artist.artistname}</NavLink>
+        <NavLink to={`/artists/${artist.id}`}>
+          <img src={artist.avatar} alt="avatar"></img>
+          {artist.artistname}
+        </NavLink>
       </li>
     );
   });
