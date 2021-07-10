@@ -20,6 +20,8 @@ const CreateArtist = () => {
     formData.append("bio", bio);
     formData.append("user_id", user.id);
 
+    console.log("Inside of ArtistCreate.js line 23, formData = ", formData);
+
     dispatch(createArtist(formData));
     history.push(`/users/${user.id}`);
   };
