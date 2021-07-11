@@ -8,18 +8,21 @@ artist_routes = Blueprint('artists', __name__)
 
 
 @artist_routes.route('/')
+@login_required
 def artists():
     artists = Artist.query.all()
     return {'artists': [artist.to_dict() for artist in artists]}
 
 
 @artist_routes.route('/<int:id>')
+@login_required
 def artist(id):
     artist = Artist.query.get(id)
     return artist.to_dict()
 
 
 @artist_routes.route('/<int:id>/songs')
+@login_required
 def artist_songs(id):
     songs = Song.query.filter(Song.artist_id == id).all()
     return {'songs': [song.to_dict() for song in songs]}

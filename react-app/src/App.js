@@ -37,12 +37,12 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/artists" exact={true}>
+        <ProtectedRoute path="/artists" exact={true}>
           <ArtistsList />
-        </Route>
-        <Route path="/artists/:artistId" exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path="/artists/:artistId" exact={true}>
           <Artist />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
