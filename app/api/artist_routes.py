@@ -104,9 +104,9 @@ def update_bio(id):
 @login_required
 def delete_artist(id):
     artist = Artist.query.get(id)
-    url = artist.avatar
-    filename = url.removeprefix('http://tunevillage-app.s3.amazonaws.com/')
-    delete_file_from_s3(filename)
+    # url = artist.avatar
+    # filename = url.removeprefix('http://tunevillage-app.s3.amazonaws.com/')
+    # delete_file_from_s3(filename)
     if not artist:
         return jsonify("artist not found")
     db.session.delete(artist)

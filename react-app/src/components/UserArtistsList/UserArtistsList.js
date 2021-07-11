@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getArtists } from "../../store/artist";
+import ArtistDeleteModal from "../ArtistDeleteModal";
 
 function UserArtistsList() {
   const dispatch = useDispatch();
@@ -18,9 +19,10 @@ function UserArtistsList() {
     return currentUser.id === Number(artist.user_id) ? (
       <li key={index}>
         <NavLink to={`/artists/${artist.id}`}>
-          <img src={artist.avatar} alt="avatar"></img>
           {artist.artistname}
+          <img src={artist.avatar} alt="avatar"></img>
         </NavLink>
+        <ArtistDeleteModal artistId={artist.id} />
       </li>
     ) : null;
   });
