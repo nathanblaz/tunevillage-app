@@ -49,7 +49,9 @@ function Artist() {
         ) : null}
       </div>
       <div>
-        <SongCreateModal artistId={artistId} />
+        {currentUser.id === Number(artistProfile.user_id) ? (
+          <SongCreateModal artistId={artistId} />
+        ) : null}
       </div>
       <SongsList artistId={artistId} />
     </div>
