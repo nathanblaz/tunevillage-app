@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { renderArtistSongs } from "../../store/song";
+import SongUpdateModal from "../SongUpdateModal";
 import SongDeleteModal from "../SongDeleteModal";
 
 const SongsList = ({ artistId }) => {
@@ -26,6 +27,11 @@ const SongsList = ({ artistId }) => {
             <audio controls src={`${song.song_url}`}></audio>
             {currentUser.id === Number(artistProfile.user_id) ? (
               <>
+                <SongUpdateModal
+                  songTitle={song.title}
+                  artistId={artistId}
+                  songId={song.id}
+                />
                 <SongDeleteModal artistId={artistId} songId={song.id} />
               </>
             ) : null}
