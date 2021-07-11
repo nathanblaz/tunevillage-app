@@ -1,6 +1,7 @@
 // constants
 const SET_SONGS = "song/SET_SONGS";
 const ADD_SONG = "song/ADD_SONG";
+const DELETE_SONG = "song/DELETE_SONG";
 
 // action creators
 const setSongs = (songs) => ({
@@ -10,6 +11,11 @@ const setSongs = (songs) => ({
 
 const addSong = (song) => ({
   type: ADD_SONG,
+  payload: song,
+});
+
+const deleteSong = (song) => ({
+  type: DELETE_SONG,
   payload: song,
 });
 
@@ -41,6 +47,18 @@ export const createSong = (formData) => async (dispatch) => {
   }
 };
 
+export const deleteASong = (id) => async (dispatch) => {
+  const res = await fetch(`/api/songs/${id}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(deleteSong(id));
+  } else {
+    console.log("error--deleteASong thunk");
+    console.log(res);
+  }
+};
+
 // reducer
 
 const initialState = {};
@@ -57,6 +75,12 @@ export default function reducer(state = initialState, action) {
       const addSongNewState = { ...state };
       addSongNewState[action.payload.id] = action.payload;
       return addSongNewState;
+    case DELETE_SONG:
+      const oldState = {
+        ...state,
+      };
+      delete oldState[action.payload];
+      return oldState;
     default:
       return state;
   }
