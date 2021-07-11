@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAUser } from "../../store/user";
+import UserArtistsList from "../UserArtistsList";
 
 function User() {
   const dispatch = useDispatch();
@@ -41,11 +42,12 @@ function User() {
       <button type="button" id="create-artist-button">
         <NavLink to={`/users/${userId}/new-artist`}>Create An Artist</NavLink>
       </button>
-      <button type="button" id="delete-artist-button">
+      <UserArtistsList />
+      {/* <button type="button" id="delete-artist-button">
         <NavLink to={`/users/${userId}/delete-artist`}>
           Delete An Artist
         </NavLink>
-      </button>
+      </button> */}
     </div>
   );
 }
