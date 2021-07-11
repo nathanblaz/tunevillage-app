@@ -3,7 +3,6 @@ import { Modal } from "../../context/Modal";
 // import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong } from "../../store/song";
-import { getAnArtist } from "../../store/artist";
 import { renderArtistSongs } from "../../store/song";
 
 const CreateSongModal = ({ artistId }) => {

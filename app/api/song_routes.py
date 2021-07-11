@@ -75,3 +75,16 @@ def create_song():
 #     db.session.add(song)
 #     db.session.commit()
 #     return song.to_dict()
+
+@song_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_song(id):
+    song = Song.query.get(id)
+    # url = song.song_url
+    # filename = url.removeprefix('http://tunevillage-app.s3.amazonaws.com/')
+    # delete_file_from_s3(filename)
+    if not song:
+        return jsonify("song not found")
+    db.session.delete(song)
+    db.session.commit()
+    return {'id': id}

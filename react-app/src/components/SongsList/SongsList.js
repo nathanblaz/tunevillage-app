@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { renderArtistSongs } from "../../store/song";
+import SongDeleteModal from "../SongDeleteModal";
 
 const SongsList = ({ artistId }) => {
   const dispatch = useDispatch();
-  // const artist =
+
+  const currentUser = useSelector((state) => state.session.user);
+  const artistProfile = useSelector((state) => state.artist);
   const songs = Object.values(useSelector((state) => state.song));
 
-  console.log("In SongsList.js, songs = ", songs);
+  // console.log("In SongsList.js, songs = ", songs);
 
   //   console.log("In ListSongs.js, userId = ", userId);
   useEffect(() => {
@@ -21,6 +24,11 @@ const SongsList = ({ artistId }) => {
           <li key={index}>
             Song: {`${song.title}`}
             <audio controls src={`${song.song_url}`}></audio>
+            {currentUser.id === Number(artistProfile.user_id) ? (
+              <>
+                <SongDeleteModal artistId={artistId} songId={song.id} />
+              </>
+            ) : null}
           </li>
         ))}
       </ul>
