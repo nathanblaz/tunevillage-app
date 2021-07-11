@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createArtist } from "../../store/artist";
+import { createArtist, getArtists } from "../../store/artist";
 
 const CreateArtist = () => {
   const history = useHistory();
@@ -23,6 +23,7 @@ const CreateArtist = () => {
     console.log("Inside of ArtistCreate.js line 23, formData = ", formData);
 
     dispatch(createArtist(formData));
+    dispatch(getArtists());
     history.push(`/users/${user.id}`);
   };
 
