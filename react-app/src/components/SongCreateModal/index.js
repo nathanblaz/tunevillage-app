@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "../../context/Modal";
 // import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createSong } from "../../store/song";
 import { renderArtistSongs } from "../../store/song";
 
@@ -10,8 +10,8 @@ const CreateSongModal = ({ artistId }) => {
 
   //   const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
-  const idForDispatch = Number(artistId);
+  // const user = useSelector((state) => state.session.user);
+  // const idForDispatch = Number(artistId);
 
   const [title, setTitle] = useState("");
   const [song, setSong] = useState(null);
@@ -35,10 +35,10 @@ const CreateSongModal = ({ artistId }) => {
   };
 
   useEffect(() => {
-    console.log(
-      "Inside of SongCreateModal/index.js useEffect, aristId = ",
-      artistId
-    );
+    // console.log(
+    //   "Inside of SongCreateModal/index.js useEffect, aristId = ",
+    //   artistId
+    // );
     dispatch(renderArtistSongs(artistId));
   }, [dispatch, artistId]);
 

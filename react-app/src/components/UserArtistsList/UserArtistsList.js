@@ -13,7 +13,7 @@ function UserArtistsList() {
     dispatch(getArtists());
   }, [dispatch]);
 
-  console.log("In ArtistsList.js, artists = ", artists);
+  // console.log("In UserArtistsList.js, artists = ", artists);
 
   const userArtistListItems = artists.map((artist, index) => {
     return currentUser.id === Number(artist.user_id) ? (

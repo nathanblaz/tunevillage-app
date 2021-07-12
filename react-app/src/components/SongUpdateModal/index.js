@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "../../context/Modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAnArtist } from "../../store/artist";
 import { updateASong, renderArtistSongs } from "../../store/song";
 
 const SongUpdateModal = ({ songTitle, artistId, songId }) => {
   const [showModal, setShowModal] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const [title, setTitle] = useState("");
 
-  console.log("Inside SongUpdateModal/index.js, songTitle = ", songTitle);
-  console.log("Inside SongUpdateModal/index.js, title = ", title);
-  console.log("Inside SongUpdateModal/index.js, songId = ", songId);
+  // console.log("Inside SongUpdateModal/index.js, songTitle = ", songTitle);
+  // console.log("Inside SongUpdateModal/index.js, title = ", title);
+  // console.log("Inside SongUpdateModal/index.js, songId = ", songId);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

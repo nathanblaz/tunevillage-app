@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAnArtist } from "../../store/artist";
 import { deleteASong, renderArtistSongs } from "../../store/song";
 
 const SongDeleteModal = ({ artistId, songId }) => {
   const [showModal, setShowModal] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
