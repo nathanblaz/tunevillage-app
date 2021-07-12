@@ -16,6 +16,11 @@
   background-color: #1b96bb;
 }
 
+#create-artist-button:hover {
+  background-color: #85c2d5;
+  transition: all 0.2s ease-out;
+}
+
 #create-artist-button a {
   text-decoration: none;
   color: white;
@@ -33,11 +38,38 @@
 
 #create-artist-button a:hover {
   text-decoration: none;
+}
+
+#delete-artist-button {
+  /* font-size: 1rem; */
+  /* padding: 0.5rem 1rem; */
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  background-color: #1b96bb;
+}
+
+#delete-artist-button:hover {
+  background-color: #85c2d5;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+#delete-artist-button a {
+  text-decoration: none;
   color: white;
 }
 
-/* #demo-button:hover {
-    background-color: #85c2d5;
-    cursor: pointer;
-    transition: all 0.2s ease-out;
-  } */
+#delete-artist-button a:link {
+  text-decoration: none;
+  color: white;
+}
+
+#delete-artist-button a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+#create-artist-button a:hover {
+  text-decoration: none;
+}
