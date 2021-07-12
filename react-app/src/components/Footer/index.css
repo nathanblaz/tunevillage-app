@@ -1,0 +1,28 @@
+.footer {
+  background-color: #eff1f2;
+  padding: 0;
+  height: fit-content;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.about-logos {
+  display: flex;
+  justify-content: center;
+  font-size: 24pt;
+}
+
+.about-logos a {
+  color: black;
+}
+
+.user-object--avi {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  grid-area: image;
+}

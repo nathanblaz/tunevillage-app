@@ -11,6 +11,7 @@ import ArtistsList from "./components/ArtistsList";
 import Artist from "./components/Artist";
 import ArtistCreate from "./components/ArtistCreate";
 import { authenticate } from "./store/session";
+import Footer from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -56,6 +57,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
