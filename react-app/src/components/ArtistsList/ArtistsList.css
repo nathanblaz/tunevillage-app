@@ -1,0 +1,55 @@
+.artist-container {
+  display: flex;
+  margin: auto;
+  max-width: 920px;
+  /* border: 3px solid green; */
+  padding: 0px 0px 37px 0px;
+
+  background-color: #eff1f2;
+}
+
+.artist-thumb-container {
+  background-color: white;
+}
+
+.artist-name {
+  background-color: white;
+  padding-left: 4px;
+}
+
+.artist-thumb-container a:link {
+  color: black;
+  text-decoration: none;
+}
+
+.artist-thumb-container a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.artist-thumb-container a:hover {
+  text-decoration: none;
+  color: #1b96bb;
+  transition: all 0.2s ease-out;
+}
+
+.artist-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  columns: 3;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.artist-li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.thumbnail {
+  /* padding: 10px 10px 0px 10px; */
+  width: 300px;
+  height: 300px;
+}
