@@ -1,0 +1,33 @@
+.artist-container {
+  display: flex;
+  margin: auto;
+  max-width: 915px;
+  border: 3px solid green;
+  padding: 10px;
+
+  background-color: violet;
+}
+
+.artist-thumb-container {
+  background-color: white;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  columns: 3;
+  column-gap: 10px;
+}
+
+.artist-li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.thumbnail {
+  padding: 10px;
+  width: 280px;
+  height: 280px;
+}

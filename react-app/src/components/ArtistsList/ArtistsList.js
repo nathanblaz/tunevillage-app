@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getArtists } from "../../store/artist";
+import "./ArtistsList.css";
 
 function ArtistsList() {
   const dispatch = useDispatch();
@@ -15,20 +16,21 @@ function ArtistsList() {
 
   const artistListItems = artists.map((artist, index) => {
     return (
-      <li key={index}>
-        <NavLink to={`/artists/${artist.id}`}>
-          <img src={artist.avatar} alt="avatar"></img>
-          {artist.artistname}
-        </NavLink>
+      <li key={index} className={"artist-li"}>
+        <div className={"artist-thumb-container"}>
+          <NavLink to={`/artists/${artist.id}`}>
+            <img src={artist.avatar} alt="avatar" className="thumbnail"></img>
+            {artist.artistname}
+          </NavLink>
+        </div>
       </li>
     );
   });
 
   return (
-    <>
-      <h1>Artist List: </h1>
+    <div className="artist-container">
       <ul>{artistListItems}</ul>
-    </>
+    </div>
   );
 }
 

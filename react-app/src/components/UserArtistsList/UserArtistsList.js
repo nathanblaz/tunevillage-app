@@ -17,10 +17,10 @@ function UserArtistsList() {
 
   const userArtistListItems = artists.map((artist, index) => {
     return currentUser.id === Number(artist.user_id) ? (
-      <li key={index}>
+      <li key={index} className={"artist-li"}>
         <NavLink to={`/artists/${artist.id}`}>
           {artist.artistname}
-          <img src={artist.avatar} alt="avatar"></img>
+          <img src={artist.avatar} alt="avatar" className="thumbnail"></img>
         </NavLink>
         <ArtistDeleteModal artistId={artist.id} />
       </li>
@@ -28,10 +28,9 @@ function UserArtistsList() {
   });
 
   return (
-    <>
-      <h1>Artist List: </h1>
+    <div className="artist-container">
       <ul>{userArtistListItems}</ul>
-    </>
+    </div>
   );
 }
 
