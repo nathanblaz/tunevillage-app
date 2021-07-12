@@ -10,7 +10,7 @@ const UpdateBioModal = ({ artistBio, artistId }) => {
   const dispatch = useDispatch();
   // const history = useHistory();
 
-  const [bio, setBio] = useState(null);
+  const [bio, setBio] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
