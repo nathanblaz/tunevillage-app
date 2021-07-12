@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
 import { demoLogin } from "../../store/session";
@@ -57,7 +57,7 @@ const NavBar = () => {
           </NavLink>
           <div id="menu-container">
             <button id="user-button" onClick={openMenu}>
-              <i className="avatar-circle" />
+              <i class="fas fa-user"></i>
             </button>
             {showMenu && (
               <div id="user-menu">
