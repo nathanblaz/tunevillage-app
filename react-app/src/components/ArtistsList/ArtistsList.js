@@ -29,7 +29,7 @@ function ArtistsList() {
 
   return (
     <div className="artist-container">
-      <ul>{artistListItems}</ul>
+      <ul className="artist-ul">{artistListItems}</ul>
     </div>
   );
 }

@@ -33,7 +33,7 @@
   transition: all 0.2s ease-out;
 }
 
-ul {
+.artist-ul {
   padding: 0;
   margin: 0;
   list-style: none;
