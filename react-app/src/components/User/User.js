@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAUser } from "../../store/user";
 import UserArtistsList from "../UserArtistsList";
+import "./User.css";
 
 function User() {
   const dispatch = useDispatch();
@@ -25,29 +26,22 @@ function User() {
 
   return (
     <div>
-      <ul>
-        <li>
-          <strong>User Id</strong> {userId}
-        </li>
-        <li>
-          <strong>Username</strong> {userProfile.username}
-        </li>
-        <li>
-          <strong>Email</strong> {userProfile.email}
-        </li>
-      </ul>
-      <div className="user-artists">
+      <div className="user-page-container">
+        <h2>User Profile</h2>
+        <ul>
+          <li>
+            <strong>Username:</strong> {userProfile.username}
+          </li>
+          <li>
+            <strong>Email:</strong> {userProfile.email}
+          </li>
+        </ul>
         <h2>Your Artists</h2>
+        <button type="button" id="create-artist-button">
+          <Link to={`/users/${userId}/new-artist`}>Create An Artist</Link>
+        </button>
       </div>
-      <button type="button" id="create-artist-button">
-        <NavLink to={`/users/${userId}/new-artist`}>Create An Artist</NavLink>
-      </button>
       <UserArtistsList />
-      {/* <button type="button" id="delete-artist-button">
-        <NavLink to={`/users/${userId}/delete-artist`}>
-          Delete An Artist
-        </NavLink>
-      </button> */}
     </div>
   );
 }
