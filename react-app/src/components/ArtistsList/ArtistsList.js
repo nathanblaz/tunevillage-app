@@ -20,7 +20,7 @@ function ArtistsList() {
         <div className={"artist-thumb-container"}>
           <NavLink to={`/artists/${artist.id}`}>
             <img src={artist.avatar} alt="avatar" className="thumbnail"></img>
-            {artist.artistname}
+            <div className="artist-name">{artist.artistname}</div>
           </NavLink>
         </div>
       </li>
