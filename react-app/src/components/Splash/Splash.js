@@ -10,7 +10,7 @@ const Splash = () => {
         music scenes.
       </div>
       <div className="image-container">
-        <img src={background} className="splash-img" />
+        <img src={background} className="splash-img" alt="Splash" />
       </div>
     </div>
   );

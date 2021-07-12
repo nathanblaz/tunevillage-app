@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "../../context/Modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 import { updateABio, getAnArtist } from "../../store/artist";
 
 const UpdateBioModal = ({ artistBio, artistId }) => {
   const [showModal, setShowModal] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   // const history = useHistory();
 
-  const [bio, setBio] = useState(null);
+  const [bio, setBio] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

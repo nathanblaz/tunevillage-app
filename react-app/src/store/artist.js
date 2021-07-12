@@ -52,7 +52,7 @@ export const getArtists = (id) => async (dispatch) => {
 };
 
 export const createArtist = (formData) => async (dispatch) => {
-  console.log("Inside of createArtist thunk line 55, formData = ", formData);
+  // console.log("Inside of createArtist thunk line 55, formData = ", formData);
   const res = await fetch("/api/artists/new", {
     method: "POST",
     body: formData,
@@ -68,7 +68,7 @@ export const createArtist = (formData) => async (dispatch) => {
 };
 
 export const getAnArtist = (id) => async (dispatch) => {
-  console.log("We made it to getAnArtist, artistId is:", id);
+  // console.log("We made it to getAnArtist, artistId is:", id);
   const res = await fetch(`/api/artists/${id}`);
   if (res.ok) {
     const artistProfile = await res.json();
@@ -123,10 +123,10 @@ export const updateABio = (formData, artistId) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  const newState = { ...state };
+  // const newState = { ...state };
   switch (action.type) {
     case SET_ARTISTS:
-      console.log("action.pahyload in SET_ARTISTS is:", action.payload);
+      // console.log("action.pahyload in SET_ARTISTS is:", action.payload);
       const manyArtistsState = {};
       action.payload.forEach((artist) => {
         manyArtistsState[artist.id] = artist;

@@ -7,6 +7,7 @@ import UpdateBioModal from "../UpdateBioModal";
 import SongCreateModal from "../SongCreateModal";
 // import DeleteAvatarModal from "../DeleteAvatarModal";
 import { getAnArtist } from "../../store/artist";
+import "./Artist.css";
 
 function Artist() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function Artist() {
   }, [dispatch, artistId]);
 
   return (
-    <div>
+    <div className="artistpage-container">
       {artistProfile.avatar !== null ? (
         <img src={artistProfile?.avatar} alt="avatar"></img>
       ) : (
