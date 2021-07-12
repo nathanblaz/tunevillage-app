@@ -82,7 +82,22 @@
 }
 
 .user-menu-buttons {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
 }
 
-.demo-button {
+#demo-button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  background-color: #1b96bb;
+}
+
+#logout-btn {
+  color: white;
+  background-color: #1b96bb;
 }
