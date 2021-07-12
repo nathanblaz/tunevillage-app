@@ -57,13 +57,17 @@ const NavBar = () => {
           </NavLink>
           <div id="menu-container">
             <button id="user-button" onClick={openMenu}>
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
             </button>
             {showMenu && (
               <div id="user-menu">
                 <div className="user-menu-buttons">
                   Hey{" "}
                   <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>!
+                  <p>
+                    Click here to view your{" "}
+                    <NavLink to={`/users/${user.id}`}>user page</NavLink>.
+                  </p>
                 </div>
                 <div className="user-menu-buttons">
                   <LogoutButton />

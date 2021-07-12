@@ -24,7 +24,7 @@ const ArtistDeleteModal = ({ artistId }) => {
 
   return (
     <div>
-      <button id="delete-artist" onClick={() => setShowModal(true)}>
+      <button id="delete-artist-button" onClick={() => setShowModal(true)}>
         Delete Artist
       </button>
       {showModal && (
