@@ -38,7 +38,7 @@ const NavBar = () => {
   return (
     <nav id="navbar">
       <NavLink
-        className="navlinks"
+        className="sitelogo"
         to="/"
         exact={true}
         activeClassName="active"
@@ -46,7 +46,7 @@ const NavBar = () => {
         <img id="logo" src={logo} alt="Tunevillage"></img>
       </NavLink>
       {user ? (
-        <>
+        <ul className="navmenu">
           <NavLink
             className="navlinks"
             to="/artists"
@@ -71,9 +71,9 @@ const NavBar = () => {
               </div>
             )}
           </div>
-        </>
+        </ul>
       ) : (
-        <>
+        <ul className="navmenu">
           <button type="button" id="demo-button" onClick={demoFunc}>
             Demo
           </button>
@@ -93,7 +93,7 @@ const NavBar = () => {
           >
             Login
           </NavLink>
-        </>
+        </ul>
       )}
     </nav>
   );

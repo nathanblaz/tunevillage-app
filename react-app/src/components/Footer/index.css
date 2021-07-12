@@ -1,8 +1,10 @@
-.footer {
-  background-color: #eff1f2;
-  padding: 0;
-  height: fit-content;
+/* 
+#2896b8 accent color
+*/
 
+.footer {
+  background-color: #2896b8;
+  height: 36px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -11,12 +13,11 @@
 
 .about-logos {
   display: flex;
-  justify-content: center;
-  font-size: 24pt;
+  justify-content: space-evenly;
 }
 
 .about-logos a {
-  color: black;
+  color: white;
 }
 
 .user-object--avi {
@@ -25,4 +26,22 @@
   border-radius: 50%;
   object-fit: cover;
   grid-area: image;
+}
+
+.footer-items {
+  font-size: 24pt;
+}
+
+.credit {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.footer-text {
+  justify-content: space-between;
+  padding-left: 8px;
+  /* align-items: center; */
+  font-size: 12pt;
 }
