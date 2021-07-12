@@ -12,6 +12,7 @@ import Artist from "./components/Artist";
 import ArtistCreate from "./components/ArtistCreate";
 import { authenticate } from "./store/session";
 import Footer from "./components/Footer";
+import Splash from "./components/Splash/Splash";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,9 +54,9 @@ function App() {
         <ProtectedRoute path="/users/:userId/new-artist" exact={true}>
           <ArtistCreate />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path="/" exact={true}>
+          <Splash />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>
