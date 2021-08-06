@@ -7,7 +7,7 @@ const Splash = () => {
     <div className="splash">
       <div className="splash-text">
         Tunevillage is an online music community built for emerging digital
-        music scenes.
+        music scenes. <p>Upload your own songs. Connect with like-minded artists. Art for art's sake.</p>
       </div>
       <div className="image-container">
         <img src={background} className="splash-img" alt="Splash" />
