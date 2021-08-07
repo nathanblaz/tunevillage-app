@@ -6,10 +6,8 @@ const Splash = () => {
   return (
     <div className="splash">
       <div className="splash-text">
-        <h3>
-          Tunevillage is an online music community built for emerging digital
-          music scenes.
-        </h3>
+        Tunevillage is an online music community built for emerging digital
+        music scenes.
         <p>
           Upload your own songs. Connect with like-minded artists. Art for art's
           sake.
