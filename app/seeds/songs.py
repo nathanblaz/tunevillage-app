@@ -93,6 +93,13 @@ def seed_songs():
         artist_id=2,
         pinned=False
     )
+    onceandfuture1 = Song(
+        title="How Does It Make You Feel",
+        song_url="https://tunevillage-app.s3.us-west-1.amazonaws.com/Once+And+Future+Band+-+Once+%26+Future+Band+-+01+How+Does+It+Make+You+Feel-.mp3",
+        song_art="https://tunevillage-app.s3.us-west-1.amazonaws.com/Once+And+Future+Band+-+cover.jpggit",
+        artist_id=3,
+        pinned=False
+    )
     fugal1 = Song(
         title='Out of Sequence',
         song_url='https://tunevillage-app.s3.us-west-1.amazonaws.com/DRAB+MAJESTY+-+Modern+Mirror+-+08+Out+of+Sequence.mp3',
@@ -126,6 +133,15 @@ def seed_songs():
     db.session.add(caveclove3)
     db.session.add(caveclove4)
     db.session.add(caveclove5)
+    db.session.add(drabmajesty1)
+    db.session.add(drabmajesty2)
+    db.session.add(drabmajesty3)
+    db.session.add(drabmajesty4)
+    db.session.add(drabmajesty5)
+    db.session.add(drabmajesty6)
+    db.session.add(drabmajesty7)
+    db.session.add(drabmajesty8)
+    db.session.add(onceandfuture1)
     db.session.add(fugal1)
     db.session.add(fugal2)
     db.session.add(fugal3)
