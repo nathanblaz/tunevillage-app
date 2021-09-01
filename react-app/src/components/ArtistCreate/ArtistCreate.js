@@ -33,44 +33,41 @@ const CreateArtist = () => {
   };
 
   return (
-    <>
+    <div className="card">
       <h1>Add A New Artist</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-container">
-          <label className="form-input">
-            Artist Name
-            <input
-              type="text"
-              name="artistname"
-              placeholder="Name"
-              onChange={(e) => setArtistname(e.target.value)}
-              value={artistname}
-            />
-          </label>
-          <label className="form-input">
-            Artist Profile Image
-            <input
-              type="file"
-              accept="image/*"
-              name="file_upload"
-              onChange={updateAvatar}
-            />
-          </label>
-          <label className="form-input">
-            Artist Bio
-            <textarea
-              name="bio"
-              placeholder="Bio"
-              onChange={(e) => setBio(e.target.value)}
-              value={bio}
-            />
-          </label>
-          <button type="submit" id="createArtistBtn">
+        <div className="formInputContainer">
+          <label className="form-input">Artist Name</label>
+          <input
+            type="text"
+            name="artistname"
+            placeholder="Name"
+            onChange={(e) => setArtistname(e.target.value)}
+            value={artistname}
+          />
+
+          <label>Artist Profile Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            name="file_upload"
+            onChange={updateAvatar}
+          />
+
+          <label>Artist Bio</label>
+          <textarea
+            name="bio"
+            placeholder="Bio"
+            onChange={(e) => setBio(e.target.value)}
+            value={bio}
+          />
+
+          <button className="submitBtn" type="submit" id="createArtistBtn">
             Submit
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
