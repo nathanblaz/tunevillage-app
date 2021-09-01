@@ -23,7 +23,9 @@ const Footer = () => {
             src="https://avatars.githubusercontent.com/u/24424412?v=4"
             alt="Nate"
           />
-          <div className="footer-text">Built by Nathan Blaz</div>
+          <div className="footer-text">
+            <a href="https://nathanblaz.github.io/">Built by Nathan Blaz</a>
+          </div>
         </div>
       </div>
     </div>
