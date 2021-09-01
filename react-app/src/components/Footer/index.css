@@ -47,3 +47,7 @@
   /* align-items: center; */
   font-size: 12pt;
 }
+
+.footer-text a {
+  text-decoration: none;
+}
